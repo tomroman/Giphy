@@ -1,5 +1,5 @@
 
-var memes = ["salt bae", "scumbag stacy"];
+var memes = ["salt bae", "dab", "spongebob"];
 console.log(memes)
 
 function renderButtons() { 
@@ -10,7 +10,7 @@ function renderButtons() {
 
         var a = $("<button>");
 
-        a.addClass("meme");
+        a.addClass("meme-btn");
         a.attr("data-meme", memes[i]);
         a.text(memes[i]);
         $("#memes-view").append(a);
@@ -26,10 +26,8 @@ function renderButtons() {
 
      });
 
-        renderButtons();
-        
 
-        $("button").on("click", function() {
+      function displayMeme() {
            
             var meme = $(this).attr("data-meme");
             console.log(this);
@@ -58,9 +56,7 @@ function renderButtons() {
       
                 
                   var memeDiv = $("<div>");
-      
                   var p = $("<p>").text("Rating: " + results[i].rating);
-       
                   var memeImage = $("<img>");                 
                   memeImage.attr("src", results[i].images.fixed_height.url);                     
                   memeDiv.append(p);
@@ -70,8 +66,24 @@ function renderButtons() {
                 }
               }
             });
-          });
+          };
 
+          $(document).on("click", ".meme-btn", displayMeme);
+
+          renderButtons();
+
+          $(".gif").on("click", function() {
+           
+            var state = $(this).attr("data-state");
+  
+            if (state === "still") {
+              $(this).attr("src", $(this).attr("data-animate"));
+              $(this).attr("data-state", "animate");
+            } else {
+              $(this).attr("src", $(this).attr("data-still"));
+              $(this).attr("data-state", "still");
+            }
+          });
 
 
 
