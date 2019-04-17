@@ -4,17 +4,17 @@ console.log(memes)
 
 function renderButtons() {
 
-  $("#button-bar").empty();
+  $("#memes-view").empty();
 
   for (var i = 0; i < memes.length; i++) {
 
     var newButton = $("<button>").text(memes[i]);
 
-    newButton.addClass("btn btn-secondary meme");
-    newButton.attr("data-meme", memes[i]);
+    newButton.addClass("meme-btn");
+    newButton.attr("data-name", memes[i]);
     
-    $("#button-bar").append(newButton);
-
+    $("#memes-view").append(newButton);
+    
   }
 }
 
@@ -28,19 +28,23 @@ $("#add-meme").on("click", function (event) {
   renderButtons();
   $("#meme-input").val("");
 
+  
+
+
 });
 
 
 function displayMeme() {
 
-  $("#meme-view").empty();
+  $("#gifs-appear-here").empty();
 
-  var meme = $(this).attr("data-meme");
+  var meme = $(this).attr("data-name");
 
 
+ var apiKey = "AG4MMBAbDd3PQ7Q6AL5dcYGRmGfCX55Y"
 
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    meme + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+  var queryURL = `https://api.giphy.com/v1/gifs/search?q=${meme}&api_key=${apiKey}&limit=10`;
 
 
   $.ajax({
@@ -49,13 +53,17 @@ function displayMeme() {
   })
 
     .then(function (response) {
-
+      console.log(response)
 
       var results = response.data;
 
+      
 
       for (var i = 0; i < results.length; i++) {
+
         var memeDiv = $("<div class='meme-div'>");
+
+       
 
 
         memeDiv.html(`
@@ -64,7 +72,7 @@ function displayMeme() {
         `);       
 
 
-          $("#meme-view").prepend(memeDiv);
+          $("#gifs-appear-here").append(memeDiv);
         
       }
     });
@@ -91,9 +99,6 @@ $(document).on("click", ".gif", function () {
 $(document).on("click", ".meme-btn", displayMeme);
 
 renderButtons();
-
-        //   create a function that can clear the existing gifs
-// create if statement that can code the starting and stoping of a gif. 
 
 
 
