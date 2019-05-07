@@ -1,0 +1,45 @@
+body {
+    background-color: dodgerblue
+}
+
+
+.btn {
+    margin: 5px 5px 0px 0px;
+    padding: 2px;
+    background-color: #008080;
+}
+
+.btn:hover {
+    background-color: #176666
+}
+
+section {
+    margin: 15px;
+    float: left;
+    width: 70%;
+}
+
+aside {
+    float: right;
+    width: 25%;
+    margin-top: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+#meme-input {
+    margin-top: 5px;
+}
+
+.meme-div {
+   float: left;
+   margin-right: 15px;
+   margin-bottom: 15px;
+   font-weight: bold;
+}
+
+.meme-div > p {
+    margin-bottom: 7px;
+}
