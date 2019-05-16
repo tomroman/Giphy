@@ -18,7 +18,7 @@ function renderButtons() {
   }
 }
 
-$("#add-meme").on("click", function (event) {
+$("#add-meme").on("submit", function (event) {
   event.preventDefault();
   var userInput = $("#meme-input").val().trim();
   
@@ -38,7 +38,7 @@ function displayMeme() {
   var meme = $(this).attr("data-name");
 
 
- var apiKey = "AG4MMBAbDd3PQ7Q6AL5dcYGRmGfCX55Y"
+ var apiKey = "AG4MMBAbDd3PQ7Q6AL5dcYGRmGfCX55Y";
 
 
   var queryURL = `https://api.giphy.com/v1/gifs/search?q=${meme}&api_key=${apiKey}&limit=10`;
