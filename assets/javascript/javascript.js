@@ -28,9 +28,6 @@ $("#add-meme").on("click", function (event) {
   renderButtons();
   $("#meme-input").val("");
 
-  
-
-
 });
 
 
@@ -50,9 +47,7 @@ function displayMeme() {
   $.ajax({
     url: queryURL,
     method: "GET"
-  })
-
-    .then(function (response) {
+  }) .then(function (response) {
       console.log(response)
 
       var results = response.data;
