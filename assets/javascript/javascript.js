@@ -7,10 +7,11 @@ function renderButtons() {
   $("#memes-view").empty();
 
   for (var i = 0; i < memes.length; i++) {
+    
 
     var newButton = $("<button>").text(memes[i]);
 
-    newButton.addClass("meme-btn");
+    newButton.addClass("btn btn-secondary meme");
     newButton.attr("data-name", memes[i]);
     
     $("#memes-view").append(newButton);
@@ -18,8 +19,12 @@ function renderButtons() {
   }
 }
 
-$("#add-meme").on("submit", function (event) {
+renderButtons();
+
+$("#meme-form").on("click", function (event) {
+
   event.preventDefault();
+  
   var userInput = $("#meme-input").val().trim();
   
   if (!memes.includes(userInput) && userInput !== "") {
@@ -27,6 +32,7 @@ $("#add-meme").on("submit", function (event) {
   }
   renderButtons();
   $("#meme-input").val("");
+
 
 });
 
@@ -36,6 +42,7 @@ function displayMeme() {
   $("#gifs-appear-here").empty();
 
   var meme = $(this).attr("data-name");
+  console.log(meme)
 
 
  var apiKey = "AG4MMBAbDd3PQ7Q6AL5dcYGRmGfCX55Y";
@@ -91,9 +98,9 @@ $(document).on("click", ".gif", function () {
 })
 
 
-$(document).on("click", ".meme-btn", displayMeme);
+$(document).on("click", ".meme", displayMeme);
 
-renderButtons();
+
 
 
 
