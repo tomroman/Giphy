@@ -1,5 +1,5 @@
 
-var memes = ["salt bae", "dab", "spongebob"];
+var memes = ["Salt Bae", "Dab", "Spongebob", "Grumpy Cat"];
 console.log(memes)
 
 function renderButtons() {
